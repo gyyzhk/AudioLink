@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -38,19 +36,13 @@ public final class ActivityMainBinding implements ViewBinding {
   public final EditText etServerPort;
 
   @NonNull
-  public final RadioButton rbMicAudio;
-
-  @NonNull
-  public final RadioButton rbSystemAudio;
-
-  @NonNull
-  public final RadioGroup rgAudioSource;
-
-  @NonNull
   public final Spinner spEncoding;
 
   @NonNull
   public final Spinner spProtocol;
+
+  @NonNull
+  public final Spinner spQuality;
 
   @NonNull
   public final Switch swService;
@@ -63,19 +55,16 @@ public final class ActivityMainBinding implements ViewBinding {
 
   private ActivityMainBinding(@NonNull ScrollView rootView, @NonNull Button btnTest,
       @NonNull EditText etDeviceId, @NonNull EditText etServerIp, @NonNull EditText etServerPort,
-      @NonNull RadioButton rbMicAudio, @NonNull RadioButton rbSystemAudio,
-      @NonNull RadioGroup rgAudioSource, @NonNull Spinner spEncoding, @NonNull Spinner spProtocol,
+      @NonNull Spinner spEncoding, @NonNull Spinner spProtocol, @NonNull Spinner spQuality,
       @NonNull Switch swService, @NonNull TextView tvStatus, @NonNull TextView tvVolume) {
     this.rootView = rootView;
     this.btnTest = btnTest;
     this.etDeviceId = etDeviceId;
     this.etServerIp = etServerIp;
     this.etServerPort = etServerPort;
-    this.rbMicAudio = rbMicAudio;
-    this.rbSystemAudio = rbSystemAudio;
-    this.rgAudioSource = rgAudioSource;
     this.spEncoding = spEncoding;
     this.spProtocol = spProtocol;
+    this.spQuality = spQuality;
     this.swService = swService;
     this.tvStatus = tvStatus;
     this.tvVolume = tvVolume;
@@ -132,24 +121,6 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.rb_mic_audio;
-      RadioButton rbMicAudio = ViewBindings.findChildViewById(rootView, id);
-      if (rbMicAudio == null) {
-        break missingId;
-      }
-
-      id = R.id.rb_system_audio;
-      RadioButton rbSystemAudio = ViewBindings.findChildViewById(rootView, id);
-      if (rbSystemAudio == null) {
-        break missingId;
-      }
-
-      id = R.id.rg_audio_source;
-      RadioGroup rgAudioSource = ViewBindings.findChildViewById(rootView, id);
-      if (rgAudioSource == null) {
-        break missingId;
-      }
-
       id = R.id.sp_encoding;
       Spinner spEncoding = ViewBindings.findChildViewById(rootView, id);
       if (spEncoding == null) {
@@ -159,6 +130,12 @@ public final class ActivityMainBinding implements ViewBinding {
       id = R.id.sp_protocol;
       Spinner spProtocol = ViewBindings.findChildViewById(rootView, id);
       if (spProtocol == null) {
+        break missingId;
+      }
+
+      id = R.id.sp_quality;
+      Spinner spQuality = ViewBindings.findChildViewById(rootView, id);
+      if (spQuality == null) {
         break missingId;
       }
 
@@ -181,8 +158,7 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((ScrollView) rootView, btnTest, etDeviceId, etServerIp,
-          etServerPort, rbMicAudio, rbSystemAudio, rgAudioSource, spEncoding, spProtocol, swService,
-          tvStatus, tvVolume);
+          etServerPort, spEncoding, spProtocol, spQuality, swService, tvStatus, tvVolume);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

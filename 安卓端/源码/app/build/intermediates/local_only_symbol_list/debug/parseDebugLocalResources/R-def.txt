@@ -1,14 +1,19 @@
 R_DEF: Internal format may change without notice
 local
+drawable btn_primary
+drawable edit_bg
+drawable header_bg
+drawable ic_launcher
+drawable ic_status
+drawable ic_volume
+drawable spinner_bg
 id btn_test
 id et_device_id
 id et_server_ip
 id et_server_port
-id rb_mic_audio
-id rb_system_audio
-id rg_audio_source
 id sp_encoding
 id sp_protocol
+id sp_quality
 id sw_service
 id tv_status
 id tv_volume

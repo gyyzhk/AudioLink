@@ -1,6 +1,6 @@
 # AudioLink 语音接收端配置
-VERSION = "v02"
-VERSION_NAME = "AudioLink 语音接收端 v02"
+VERSION = "v2.2"
+VERSION_NAME = "AudioLink 语音接收端 v2.2"
 
 HOST = "0.0.0.0"  # 监听地址
 PORT = 8080       # 监听端口

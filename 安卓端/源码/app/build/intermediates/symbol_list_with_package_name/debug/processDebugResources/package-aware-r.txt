@@ -2972,6 +2972,7 @@ drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
 drawable btn_checkbox_unchecked_to_checked_mtrl_animation
+drawable btn_primary
 drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
@@ -2981,6 +2982,8 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable edit_bg
+drawable header_bg
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -2991,6 +2994,7 @@ drawable ic_call_decline_low
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
+drawable ic_launcher
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
@@ -2999,6 +3003,8 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable ic_status
+drawable ic_volume
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
 drawable m3_bottom_sheet_drag_handle
@@ -3071,6 +3077,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable spinner_bg
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3435,12 +3442,9 @@ id progress_circular
 id progress_horizontal
 id radio
 id ratio
-id rb_mic_audio
-id rb_system_audio
 id rectangles
 id report_drawn
 id reverseSawtooth
-id rg_audio_source
 id right
 id rightToLeft
 id right_icon
@@ -3487,6 +3491,7 @@ id snapMargins
 id south
 id sp_encoding
 id sp_protocol
+id sp_quality
 id spacer
 id special_effects_controller_view_tag
 id spline

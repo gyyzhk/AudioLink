@@ -37,8 +37,8 @@ class OpusDecoder:
         else:
             logger.warning("OPUS解码器不可用，将回退到PCM模式")
     
-    def decode(self, """解码OP opus_data):
-       US数据为PCM数据"""
+    def decode(self, opus_data):
+        """解码OPUS数据为PCM数据"""
         if not self.enabled or self.decoder is None:
             # 如果解码器不可用，返回原始数据
             return opus_data

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -27,6 +26,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 1001;
     
+    // 录音质量
+    public static final int QUALITY_HIGH = 0;   // 48kHz, 128kbps
+    public static final int QUALITY_MID = 1;    // 16kHz, 64kbps
+    public static final int QUALITY_LOW = 2;     // 8kHz, 32kbps
+    
     private ActivityMainBinding binding;
     private PreferencesManager prefs;
     private NetworkClient networkClient;
@@ -34,10 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isRecording = false;
     private Thread recordingThread;
     private int bufferSize;
-    
-    private static final int SAMPLE_RATE = 16000;
-    private static final int CHANNEL_CONFIG = AudioFormat.CHANNEL_IN_MONO;
-    private static final int AUDIO_FORMAT = AudioFormat.ENCODING_PCM_16BIT;
+    private int currentQuality = QUALITY_MID;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         
         prefs = PreferencesManager.getInstance(this);
-        bufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE, CHANNEL_CONFIG, AUDIO_FORMAT);
         
         initViews();
         loadConfig();
@@ -61,14 +61,22 @@ public class MainActivity extends AppCompatActivity {
     }
     
     private void initViews() {
+        // 协议选择
         String[] protocols = {Constants.PROTOCOL_TCP, Constants.PROTOCOL_UDP, Constants.PROTOCOL_HTTP};
         ArrayAdapter<String> protocolAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, protocols);
         binding.spProtocol.setAdapter(protocolAdapter);
         
+        // 录音质量选择
+        String[] qualities = {"高音质 (48kHz)", "标准音质 (16kHz)", "低音质 (8kHz)"};
+        ArrayAdapter<String> qualityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, qualities);
+        binding.spQuality.setAdapter(qualityAdapter);
+        
+        // 编码选择
         String[] encodings = {"PCM (无压缩)", "OPUS (压缩)"};
         ArrayAdapter<String> encodingAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, encodings);
         binding.spEncoding.setAdapter(encodingAdapter);
         
+        // 监听事件
         binding.btnTest.setOnClickListener(v -> testConnection());
         binding.swService.setOnCheckedChangeListener((buttonView, isChecked) -> toggleService(isChecked));
     }
@@ -78,11 +86,16 @@ public class MainActivity extends AppCompatActivity {
         binding.etServerPort.setText(String.valueOf(prefs.getServerPort()));
         binding.etDeviceId.setText(prefs.getDeviceId());
         
+        // 协议
         String protocol = prefs.getProtocol();
         if (Constants.PROTOCOL_UDP.equals(protocol)) binding.spProtocol.setSelection(1);
         else if (Constants.PROTOCOL_HTTP.equals(protocol)) binding.spProtocol.setSelection(2);
         else binding.spProtocol.setSelection(0);
         
+        // 质量
+        binding.spQuality.setSelection(prefs.getAudioQuality());
+        
+        // 编码
         binding.spEncoding.setSelection(prefs.getAudioEncoding());
     }
     
@@ -91,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         prefs.setServerPort(Integer.parseInt(binding.etServerPort.getText().toString().trim()));
         prefs.setDeviceId(binding.etDeviceId.getText().toString().trim());
         prefs.setProtocol(binding.spProtocol.getSelectedItem().toString());
+        prefs.setAudioQuality(binding.spQuality.getSelectedItemPosition());
         prefs.setAudioEncoding(binding.spEncoding.getSelectedItemPosition());
     }
     
@@ -136,16 +150,34 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     
+    private int getSampleRateForQuality(int quality) {
+        switch (quality) {
+            case QUALITY_HIGH: return 48000;
+            case QUALITY_LOW: return 8000;
+            default: return 16000;
+        }
+    }
+    
     private void startRecording() {
         if (isRecording) return;
         
+        currentQuality = binding.spQuality.getSelectedItemPosition();
+        int sampleRate = getSampleRateForQuality(currentQuality);
+        int channelConfig = AudioFormat.CHANNEL_IN_MONO;
+        int audioFormat = AudioFormat.ENCODING_PCM_16BIT;
+        
+        bufferSize = AudioRecord.getMinBufferSize(sampleRate, channelConfig, audioFormat);
+        
         try {
+            // 创建网络客户端
             networkClient = new NetworkClient();
             String encoding = (binding.spEncoding.getSelectedItemPosition() == 1) ? Constants.ENCODING_OPUS : Constants.ENCODING_PCM;
-            networkClient.configure(prefs.getServerIp(), prefs.getServerPort(), prefs.getProtocol(), prefs.getDeviceId(), encoding);
+            networkClient.configure(prefs.getServerIp(), prefs.getServerPort(), 
+                prefs.getProtocol(), prefs.getDeviceId(), encoding);
             networkClient.connect();
             
-            audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, SAMPLE_RATE, CHANNEL_CONFIG, AUDIO_FORMAT, bufferSize);
+            // 创建AudioRecord
+            audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, sampleRate, channelConfig, audioFormat, bufferSize);
             
             if (audioRecord.getState() != AudioRecord.STATE_INITIALIZED) {
                 Toast.makeText(this, "麦克风初始化失败", Toast.LENGTH_SHORT).show();
@@ -155,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
             audioRecord.startRecording();
             isRecording = true;
             
+            // 开始录音线程
             recordingThread = new Thread(() -> {
                 byte[] buffer = new byte[bufferSize];
                 while (isRecording) {

@@ -1,19 +1,47 @@
 [
     {
-        "merged": "com.audiolink.sender.app-debug-32:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.audiolink.sender.app-main-34:/mipmap-mdpi/ic_launcher.png"
+        "merged": "com.audiolink.sender.app-debug-32:/drawable_btn_primary.xml.flat",
+        "source": "com.audiolink.sender.app-main-34:/drawable/btn_primary.xml"
     },
     {
-        "merged": "com.audiolink.sender.app-debug-32:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "com.audiolink.sender.app-main-34:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "com.audiolink.sender.app-debug-32:/drawable_ic_launcher.jpg.flat",
+        "source": "com.audiolink.sender.app-main-34:/drawable/ic_launcher.jpg"
     },
     {
-        "merged": "com.audiolink.sender.app-debug-32:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.audiolink.sender.app-main-34:/mipmap-hdpi/ic_launcher.png"
+        "merged": "com.audiolink.sender.app-debug-32:/mipmap-xxhdpi_ic_launcher.jpg.flat",
+        "source": "com.audiolink.sender.app-main-34:/mipmap-xxhdpi/ic_launcher.jpg"
     },
     {
-        "merged": "com.audiolink.sender.app-debug-32:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.audiolink.sender.app-main-34:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "com.audiolink.sender.app-debug-32:/drawable_header_bg.xml.flat",
+        "source": "com.audiolink.sender.app-main-34:/drawable/header_bg.xml"
+    },
+    {
+        "merged": "com.audiolink.sender.app-debug-32:/mipmap-xhdpi_ic_launcher.jpg.flat",
+        "source": "com.audiolink.sender.app-main-34:/mipmap-xhdpi/ic_launcher.jpg"
+    },
+    {
+        "merged": "com.audiolink.sender.app-debug-32:/drawable_ic_volume.xml.flat",
+        "source": "com.audiolink.sender.app-main-34:/drawable/ic_volume.xml"
+    },
+    {
+        "merged": "com.audiolink.sender.app-debug-32:/drawable_ic_status.xml.flat",
+        "source": "com.audiolink.sender.app-main-34:/drawable/ic_status.xml"
+    },
+    {
+        "merged": "com.audiolink.sender.app-debug-32:/drawable_spinner_bg.xml.flat",
+        "source": "com.audiolink.sender.app-main-34:/drawable/spinner_bg.xml"
+    },
+    {
+        "merged": "com.audiolink.sender.app-debug-32:/drawable_edit_bg.xml.flat",
+        "source": "com.audiolink.sender.app-main-34:/drawable/edit_bg.xml"
+    },
+    {
+        "merged": "com.audiolink.sender.app-debug-32:/mipmap-mdpi_ic_launcher.jpg.flat",
+        "source": "com.audiolink.sender.app-main-34:/mipmap-mdpi/ic_launcher.jpg"
+    },
+    {
+        "merged": "com.audiolink.sender.app-debug-32:/mipmap-hdpi_ic_launcher.jpg.flat",
+        "source": "com.audiolink.sender.app-main-34:/mipmap-hdpi/ic_launcher.jpg"
     },
     {
         "merged": "com.audiolink.sender.app-debug-32:/layout_activity_main.xml.flat",

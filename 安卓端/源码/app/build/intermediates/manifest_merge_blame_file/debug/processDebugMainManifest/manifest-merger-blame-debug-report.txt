@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.audiolink.sender"
-4    android:versionCode="2"
-5    android:versionName="v02" >
+4    android:versionCode="4"
+5    android:versionName="v2.2" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="24"
@@ -56,10 +56,10 @@
 34-->[androidx.core:core:1.12.0] /Users/txmac/.gradle/caches/transforms-3/f77e7110af5da499b096d7ec7ddd5d11/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
 35        android:debuggable="true"
 36        android:extractNativeLibs="false"
-37        android:icon="@mipmap/ic_launcher"
-37-->/Users/txmac/.openclaw/workspace/android_project/improved/app/src/main/AndroidManifest.xml:21:9-43
-38        android:label="语音传输助手"
-38-->/Users/txmac/.openclaw/workspace/android_project/improved/app/src/main/AndroidManifest.xml:22:9-31
+37        android:icon="@drawable/ic_launcher"
+37-->/Users/txmac/.openclaw/workspace/android_project/improved/app/src/main/AndroidManifest.xml:21:9-45
+38        android:label="火场语音回传助手"
+38-->/Users/txmac/.openclaw/workspace/android_project/improved/app/src/main/AndroidManifest.xml:22:9-33
 39        android:supportsRtl="true"
 39-->/Users/txmac/.openclaw/workspace/android_project/improved/app/src/main/AndroidManifest.xml:23:9-35
 40        android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >

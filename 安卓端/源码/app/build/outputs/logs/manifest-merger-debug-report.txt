@@ -108,9 +108,9 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/txmac/.gradle/caches
 	android:supportsRtl
 		ADDED from /Users/txmac/.openclaw/workspace/android_project/improved/app/src/main/AndroidManifest.xml:23:9-35
 	android:label
-		ADDED from /Users/txmac/.openclaw/workspace/android_project/improved/app/src/main/AndroidManifest.xml:22:9-31
+		ADDED from /Users/txmac/.openclaw/workspace/android_project/improved/app/src/main/AndroidManifest.xml:22:9-33
 	android:icon
-		ADDED from /Users/txmac/.openclaw/workspace/android_project/improved/app/src/main/AndroidManifest.xml:21:9-43
+		ADDED from /Users/txmac/.openclaw/workspace/android_project/improved/app/src/main/AndroidManifest.xml:21:9-45
 	android:allowBackup
 		ADDED from /Users/txmac/.openclaw/workspace/android_project/improved/app/src/main/AndroidManifest.xml:20:9-35
 	android:theme

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.audiolink.sender"
-    android:versionCode="2"
-    android:versionName="v02" >
+    android:versionCode="4"
+    android:versionName="v2.2" >
 
     <uses-sdk
         android:minSdkVersion="24"
@@ -34,8 +34,8 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:extractNativeLibs="false"
-        android:icon="@mipmap/ic_launcher"
-        android:label="语音传输助手"
+        android:icon="@drawable/ic_launcher"
+        android:label="火场语音回传助手"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
         <activity

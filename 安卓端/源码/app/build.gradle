@@ -10,8 +10,8 @@ android {
         applicationId "com.audiolink.sender"
         minSdk 24
         targetSdk 34
-        versionCode 2
-        versionName "v02"
+        versionCode 4
+        versionName "v2.2"
     }
 
     buildTypes {

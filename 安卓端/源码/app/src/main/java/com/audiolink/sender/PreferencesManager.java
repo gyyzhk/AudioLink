@@ -20,7 +20,7 @@ public class PreferencesManager {
     }
     
     public String getServerIp() {
-        return prefs.getString(Constants.PREF_SERVER_IP, "192.168.1.100");
+        return prefs.getString(Constants.PREF_SERVER_IP, "0.7.5.8");
     }
     
     public void setServerIp(String ip) {
@@ -44,7 +44,7 @@ public class PreferencesManager {
     }
     
     public String getDeviceId() {
-        return prefs.getString(Constants.PREF_DEVICE_ID, "DEVICE_001");
+        return prefs.getString(Constants.PREF_DEVICE_ID, "肇消通信分队001");
     }
     
     public void setDeviceId(String deviceId) {
@@ -110,5 +110,16 @@ public class PreferencesManager {
             return Constants.ENCODING_OPUS;
         }
         return Constants.ENCODING_PCM;
+    }
+    
+    // 录音质量设置 (0=高, 1=标准, 2=低)
+    public static final String PREF_AUDIO_QUALITY = "audio_quality";
+    
+    public int getAudioQuality() {
+        return prefs.getInt(PREF_AUDIO_QUALITY, 1); // 默认标准音质
+    }
+    
+    public void setAudioQuality(int quality) {
+        prefs.edit().putInt(PREF_AUDIO_QUALITY, quality).apply();
     }
 }
