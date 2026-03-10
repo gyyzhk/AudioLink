@@ -1,0 +1,16 @@
+R_DEF: Internal format may change without notice
+local
+id btn_test
+id et_device_id
+id et_server_ip
+id et_server_port
+id rb_mic_audio
+id rb_system_audio
+id rg_audio_source
+id sp_encoding
+id sp_protocol
+id sw_service
+id tv_status
+id tv_volume
+layout activity_main
+mipmap ic_launcher
